@@ -80,10 +80,7 @@
                     </div>
 
                     <div class="food-card-content">
-                        <div class="food-card-topline">
-                            <span class="veg-mark" aria-label="Vegetarian item"><i></i></span>
-                            <span class="food-rating">★ 4.8</span>
-                        </div>
+                        
 
                         <h3>{{ item.name }}</h3>
                         <p class="food-price">â‚¹<span class="price-value">{{ item.price }}</span></p>
@@ -93,8 +90,6 @@
                             <span>What's included</span>
                             {{ item.combo_contents }}
                         </div>
-                        {% else %}
-                        <div class="food-description">Prepared fresh with quality ingredients for the perfect bite.</div>
                         {% endif %}
 
                         <div class="food-actions">
