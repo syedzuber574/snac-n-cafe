@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Item</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>Edit Item</h1>
+
+</header>
+
+<section style="padding:20px;">
+
+<form
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="text"
+name="name"
+value="{{ item.name }}"
+required>
+
+<br><br>
+
+<input
+type="number"
+name="price"
+value="{{ item.price }}"
+required>
+
+<br><br>
+
+<input
+type="file"
+name="image">
+
+<br><br>
+
+<select
+name="category">
+
+<option value="burger" {% if item.category=="burger" %}selected{% endif %}>Burger</option>
+
+<option value="pizza" {% if item.category=="pizza" %}selected{% endif %}>Pizza</option>
+
+<option value="falooda" {% if item.category=="falooda" %}selected{% endif %}>Falooda</option>
+
+<option value="mojito" {% if item.category=="mojito" %}selected{% endif %}>Mojito</option>
+
+<option value="lemonade" {% if item.category=="lemonade" %}selected{% endif %}>Lemonade</option>
+
+<option value="smoothie" {% if item.category=="smoothie" %}selected{% endif %}>Smoothie</option>
+
+<option value="fries" {% if item.category=="fries" %}selected{% endif %}>Fries</option>
+
+<option value="quick_bites" {% if item.category=="quick_bites" %}selected{% endif %}>Quick Bites</option>
+
+<option value="momos" {% if item.category=="momos" %}selected{% endif %}>Momos</option>
+
+<option value="chinese" {% if item.category=="chinese" %}selected{% endif %}>Chinese</option>
+
+<option value="fried_chicken" {% if item.category=="fried_chicken" %}selected{% endif %}>Fried Chicken</option>
+
+<option value="rolls" {% if item.category=="rolls" %}selected{% endif %}>Rolls</option>
+
+<option value="sandwiches" {% if item.category=="sandwiches" %}selected{% endif %}>Sandwiches</option>
+
+<option value="milk_shakes" {% if item.category=="milk_shakes" %}selected{% endif %}>Milk Shakes</option>
+
+<option value="fresh_juices" {% if item.category=="fresh_juices" %}selected{% endif %}>Fresh Juices</option>
+
+<option value="combo" {% if item.category=="combo" %}selected{% endif %}>Combo</option>
+
+</select>
+<div id="comboBox">
+
+    <label>
+        Combo Contents
+    </label>
+
+    <br><br>
+
+    <textarea
+    id="combo_contents"
+    name="combo_contents"
+    rows="4"
+    style="width:100%;">
+
+{{ item.combo_contents }}
+
+    </textarea>
+
+</div>
+<br><br>
+
+<button
+type="submit">
+
+Update Item
+
+</button>
+
+</form>
+
+</section>
+<script>
+
+const categorySelect =
+document.querySelector(
+'select[name="category"]'
+);
+
+const comboBox =
+document.getElementById(
+'comboBox'
+);
+
+const comboField =
+document.getElementById(
+'combo_contents'
+);
+
+function toggleComboField(){
+
+    if(
+        categorySelect.value
+        ===
+        "combo"
+    ){
+
+        comboBox.style.display =
+        "block";
+
+    }else{
+
+        comboBox.style.display =
+        "none";
+
+        comboField.value = "";
+    }
+}
+
+categorySelect.addEventListener(
+"change",
+toggleComboField
+);
+
+toggleComboField();
+
+</script>
+</body>
+</html>

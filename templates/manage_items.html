@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Items</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>Manage Items</h1>
+
+</header>
+
+<div style="padding:15px;">
+
+    <a href="/admin-dashboard"
+       style="
+       text-decoration:none;
+       color:red;
+       font-size:18px;
+       font-weight:bold;">
+
+       ← Back Dashboard
+
+    </a>
+
+</div>
+
+<section>
+
+{% for item in items %}
+
+<div class="food-card">
+
+    <img
+    src="{{ url_for(
+    'static',
+    filename='uploads/' + item.image
+    ) }}"
+
+    alt="{{ item.name }}">
+
+    <h3>
+        {{ item.name }}
+    </h3>
+
+    <p>
+        ₹{{ item.price }}
+    </p>
+
+    <p>
+    {{ item.category }}
+    </p>
+
+    {% if item.combo_contents %}
+
+    <p style="
+    color:#ff9800;
+    font-weight:bold;">
+    🍔 Includes:
+    </p>
+
+    <p>
+    {{ item.combo_contents }}
+    </p>
+
+    {% endif %}
+
+    <a href="/edit-item/{{ item.id }}">
+
+        <button
+        style="
+        background:#ff9800;
+        margin-bottom:10px;">
+
+            ✏️ Edit
+
+        </button>
+
+    </a>
+
+    <a href="/delete-item/{{ item.id }}">
+
+        <button
+        style="
+        background:red;">
+
+            🗑 Delete
+
+        </button>
+
+    </a>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+</body>
+</html>

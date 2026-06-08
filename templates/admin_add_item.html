@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Item</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body style="
+font-family:Arial;
+background:#fff8ef;
+padding:20px;">
+
+    <div style="
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;">
+
+        <h1 style="
+        text-align:center;
+        color:red;">
+
+            ➕ Add Item
+
+        </h1>
+
+        <form
+        method="POST"
+        enctype="multipart/form-data">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Item Name"
+                required
+                style="
+                width:100%;
+                padding:15px;
+                margin-bottom:15px;">
+
+            <input
+                type="number"
+                name="price"
+                placeholder="Price"
+                required
+                style="
+                width:100%;
+                padding:15px;
+                margin-bottom:15px;">
+
+            <input
+                type="file"
+                name="image"
+                required
+                style="
+                width:100%;
+                padding:15px;
+                margin-bottom:15px;">
+
+            <select
+                name="category"
+                required
+                style="
+                width:100%;
+                padding:15px;
+                margin-bottom:20px;">
+
+                <option value="burger">Burger</option>
+                <option value="pizza">Pizza</option>
+                <option value="falooda">Falooda</option>
+                <option value="mojito">Mojito</option>
+                <option value="lemonade">Lemonade</option>
+                <option value="smoothie">Smoothie</option>
+                <option value="fries">Fries</option>
+                <option value="quick_bites">Quick Bites</option>
+                <option value="momos">Momos</option>
+                <option value="chinese">Chinese</option>
+                <option value="fried_chicken">Fried Chicken</option>
+                <option value="rolls">Rolls</option>
+                <option value="sandwiches">Sandwiches</option>
+                <option value="milk_shakes">Milk Shakes</option>
+                <option value="fresh_juices">Fresh Juices</option>
+                <option value="combo">Combo</option>
+
+            </select>
+            <div id="comboBox" style="display:none;">
+
+    <label>
+        Combo Contents
+    </label>
+
+    <textarea
+        id="combo_contents"
+        name="combo_contents"
+        placeholder="Veg Burger + Fries + Mojito"
+        style="
+        width:100%;
+        padding:15px;
+        margin-top:10px;
+        margin-bottom:20px;
+        border:1px solid #ddd;
+        border-radius:10px;
+        resize:vertical;">
+    </textarea>
+
+</div>
+            <button
+                type="submit"
+                style="
+                width:100%;
+                padding:15px;
+                background:red;
+                color:white;
+                border:none;
+                border-radius:10px;
+                font-size:16px;">
+
+                Add Item
+
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/admin-dashboard"
+           style="
+           text-decoration:none;
+           color:red;
+           font-weight:bold;">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+<script>
+
+const categorySelect =
+document.querySelector(
+'select[name="category"]'
+);
+
+const comboBox =
+document.getElementById(
+'comboBox'
+);
+
+const comboField =
+document.getElementById(
+'combo_contents'
+);
+
+function toggleComboField(){
+
+    if(
+        categorySelect.value
+        ===
+        "combo"
+    ){
+
+        comboBox.style.display =
+        "block";
+
+    }else{
+
+        comboBox.style.display =
+        "none";
+
+        comboField.value = "";
+    }
+}
+
+categorySelect.addEventListener(
+"change",
+toggleComboField
+);
+
+toggleComboField();
+
+</script>
+</body>
+</html>

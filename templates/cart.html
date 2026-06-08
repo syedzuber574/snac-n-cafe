@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cart - Snac N Cafe</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+    <script src="{{ url_for('static',
+    filename='js/script.js') }}"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <h1>My Cart</h1>
+
+        <a href="/"
+           class="cart-wrapper">
+
+            <span class="cart-icon">
+                🛒
+            </span>
+
+            <span id="cart-count"
+                  class="cart-count">
+                0
+            </span>
+
+        </a>
+
+    </header>
+
+    <!-- Back Button -->
+    <div style="padding:15px;">
+
+        <a href="/"
+           style="
+           text-decoration:none;
+           color:red;
+           font-size:18px;
+           font-weight:bold;
+           ">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <!-- Cart Items -->
+    <section id="cart-items"
+             style="padding:15px;">
+
+    </section>
+
+    <!-- Total -->
+    <div style="padding:15px;">
+
+        <h2 id="total-price">
+            Total: ₹0
+        </h2>
+
+        <!-- Checkout Button -->
+        <a href="/checkout">
+
+    <button style="
+        background:red;
+        color:white;
+        border:none;
+        padding:15px;
+        width:100%;
+        border-radius:10px;
+        font-size:18px;
+        cursor:pointer;
+        margin-bottom:10px;
+    ">
+
+        Checkout
+
+    </button>
+
+</a>
+
+        <!-- Clear Cart -->
+        <button onclick="clearCart()"
+            style="
+            background:#333;
+            color:white;
+            border:none;
+            padding:15px;
+            width:100%;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+        ">
+            Clear Cart
+        </button>
+
+    </div>
+
+</body>
+</html>

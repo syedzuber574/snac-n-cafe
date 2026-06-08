@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5a1f">
+    <title>Snac N Cafe | Fresh Food, Fast Delivery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body class="home-page">
+    <header class="header site-header">
+        <a href="/" class="brand" aria-label="Snac N Cafe home">
+            <span class="brand-mark">S</span>
+            <span class="brand-copy">
+                <strong>Snac N Cafe</strong>
+                <small>Fresh bites. Happy nights.</small>
+            </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <a href="/" class="active">Home</a>
+            <a href="/combo">Combos</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <a href="/cart" class="cart-wrapper" aria-label="Open cart">
+            <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3h2l2.2 10.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H7M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
+            </svg>
+            <span class="cart-label">Cart</span>
+            <span id="cart-count" class="cart-count">0</span>
+        </a>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-glow hero-glow-one"></div>
+            <div class="hero-glow hero-glow-two"></div>
+
+            <div class="hero-content">
+                <span class="eyebrow">Made fresh, delivered fast</span>
+                <h1>Cravings don't wait.<br><span>Neither should you.</span></h1>
+                <p>From loaded burgers to chilled mojitos, discover cafe favourites prepared fresh for every mood.</p>
+
+                <div class="search-container hero-search">
+                    <span class="search-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="m20 20-3.8-3.8"></path>
+                        </svg>
+                    </span>
+                    <input type="text" id="foodSearch" placeholder="Search for burger, pizza, mojito..." autocomplete="off" aria-label="Search food">
+                    <span class="search-hint">Enter</span>
+                    <div id="searchSuggestions" class="search-suggestions"></div>
+                </div>
+
+                <div class="hero-meta">
+                    <span>
+                        <strong>30 min</strong>
+                        Average delivery
+                    </span>
+                    <span>
+                        <strong>4.8/5</strong>
+                        Customer rating
+                    </span>
+                    <span>
+                        <strong>Fresh</strong>
+                        Made to order
+                    </span>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85" alt="">
+                </div>
+                <div class="floating-card floating-rating">
+                    <span class="rating-star">★</span>
+                    <div><strong>4.8</strong><small>2k+ happy foodies</small></div>
+                </div>
+                <div class="floating-card floating-delivery">
+                    <span class="delivery-icon">30</span>
+                    <div><strong>Quick delivery</strong><small>Hot & fresh at your door</small></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section categories-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow dark">Explore the menu</span>
+                    <h2>What's on your mind?</h2>
+                </div>
+                <span class="swipe-note">Swipe to explore</span>
+            </div>
+
+            <div class="categories">
+                <a href="/falooda" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80" alt="Falooda" loading="lazy"><p>Falooda</p><span>Sweet & chilled</span></div></a>
+                <a href="/mojito" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=400&q=80" alt="Mojito" loading="lazy"><p>Mojito</p><span>Cool refreshers</span></div></a>
+                <a href="/lemonade" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=400&q=80" alt="Lemonade" loading="lazy"><p>Lemonade</p><span>Zesty & fresh</span></div></a>
+                <a href="/smoothie" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=400&q=80" alt="Smoothie" loading="lazy"><p>Smoothie</p><span>Fruit goodness</span></div></a>
+                <a href="/fries" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=400&q=80" alt="French Fries" loading="lazy"><p>French Fries</p><span>Golden & crispy</span></div></a>
+                <a href="/quick_bites" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1621852004158-f3bc188ace2d?auto=format&fit=crop&w=400&q=80" alt="Quick Bites" loading="lazy"><p>Quick Bites</p><span>Snack attack</span></div></a>
+                <a href="/momos" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=400&q=80" alt="Momos" loading="lazy"><p>Momos</p><span>Steamy favourites</span></div></a>
+                <a href="/chinese" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80" alt="Chinese" loading="lazy"><p>Chinese</p><span>Wok-tossed</span></div></a>
+                <a href="/fried_chicken" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=400&q=80" alt="Fried Chicken" loading="lazy"><p>Fried Chicken</p><span>Crunchy & juicy</span></div></a>
+                <a href="/rolls" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=400&q=80" alt="Rolls" loading="lazy"><p>Rolls</p><span>Perfectly wrapped</span></div></a>
+                <a href="/burger" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Burger" loading="lazy"><p>Burger</p><span>Big, bold bites</span></div></a>
+                <a href="/pizza" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=400&q=80" alt="Pizza" loading="lazy"><p>Pizza</p><span>Cheesy goodness</span></div></a>
+                <a href="/sandwiches" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80" alt="Sandwiches" loading="lazy"><p>Sandwiches</p><span>Toasted fresh</span></div></a>
+                <a href="/milk_shakes" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80" alt="Milk Shakes" loading="lazy"><p>Milk Shakes</p><span>Thick & creamy</span></div></a>
+                <a href="/fresh_juices" class="category-link"><div class="category-card"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=400&q=80" alt="Fresh Juices" loading="lazy"><p>Fresh Juices</p><span>Pure refreshment</span></div></a>
+                <a href="/combo" class="category-link"><div class="category-card"><img src="{{ url_for('static', filename='images/combo.png') }}"><p>Combo Deals</p><span>More for less</span></div></a>
+            </div>
+        </section>
+
+        <section class="content-section combo-section">
+            <a href="/combo" class="combo-banner">
+                <div class="combo-copy">
+                    <span class="deal-pill">Limited time deal</span>
+                    <h2>Big cravings.<br>Bigger savings.</h2>
+                    <p>Pick a combo, share the joy, and save more on every order.</p>
+                    <span class="combo-cta">Explore combo deals <strong>→</strong></span>
+                </div>
+                <div class="combo-image">
+                    <img src="{{ url_for('static', filename='images/combo.png') }}">
+                    <span class="discount-badge">Save<br><strong>25%</strong></span>
+                </div>
+            </a>
+        </section>
+
+        <section class="content-section trust-section">
+            <article><span>01</span><div><h3>Freshly prepared</h3><p>Every order is made after you place it.</p></div></article>
+            <article><span>02</span><div><h3>Quality ingredients</h3><p>Great taste starts with better ingredients.</p></div></article>
+            <article><span>03</span><div><h3>Fast & reliable</h3><p>Your favourites, packed with care and on time.</p></div></article>
+        </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <a href="/" class="active"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Home</span></a>
+        <a href="/combo"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2Zm10 14V7M12 7H7.5a2.5 2.5 0 1 1 2.1-3.9L12 7Zm0 0h4.5a2.5 2.5 0 1 0-2.1-3.9L12 7Z"/></svg><span>Offers</span></a>
+        <a href="/cart"><svg viewBox="0 0 24 24"><path d="M3 3h2l2.2 10.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H7M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg><span>Cart</span></a>
+        <a href="/contact"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span>Contact</span></a>
+    </nav>
+</body>
+</html>

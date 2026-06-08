@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5a1f">
+    <title>{{ title }} | Snac N Cafe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body class="menu-page">
+    <header class="header site-header">
+        <a href="/" class="brand" aria-label="Snac N Cafe home">
+            <span class="brand-mark">S</span>
+            <span class="brand-copy">
+                <strong>Snac N Cafe</strong>
+                <small>Fresh bites. Happy nights.</small>
+            </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/combo">Combos</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <a href="/cart" class="cart-wrapper" aria-label="Open cart">
+            <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3h2l2.2 10.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H7M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
+            </svg>
+            <span class="cart-label">Cart</span>
+            <span id="cart-count" class="cart-count">0</span>
+        </a>
+    </header>
+
+    <main>
+        <section class="category-hero category-{{ category }}">
+            <div class="category-hero-overlay"></div>
+            <div class="category-hero-content">
+                <a href="/" class="back-link">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                    Back to menu
+                </a>
+                <span class="eyebrow">Snac N Cafe favourites</span>
+                <h1>{{ title }}</h1>
+                <p>Freshly prepared, full of flavour, and ready to make your day delicious.</p>
+                <div class="category-hero-tags">
+                    <span>Freshly made</span>
+                    <span>Quality ingredients</span>
+                    <span>Quick service</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-content">
+            <div class="section-heading menu-heading">
+                <div>
+                    <span class="eyebrow dark">Choose your favourite</span>
+                    <h2>{{ title }} Menu</h2>
+                </div>
+                {% if items %}
+                <span class="item-count">{{ items|length }} delicious option{% if items|length != 1 %}s{% endif %}</span>
+                {% endif %}
+            </div>
+
+            {% if items %}
+            <div class="food-grid">
+                {% for item in items %}
+                <article class="food-card">
+                    <div class="food-image">
+                        <img src="{{ url_for('static', filename='uploads/' + item.image) }}" alt="{{ item.name }}" loading="lazy">
+                        <span class="food-badge">{% if item.combo_contents %}Combo{% else %}Fresh{% endif %}</span>
+                    </div>
+
+                    <div class="food-card-content">
+                        <div class="food-card-topline">
+                            <span class="veg-mark" aria-label="Vegetarian item"><i></i></span>
+                            <span class="food-rating">★ 4.8</span>
+                        </div>
+
+                        <h3>{{ item.name }}</h3>
+                        <p class="food-price">â‚¹<span class="price-value">{{ item.price }}</span></p>
+
+                        {% if item.combo_contents %}
+                        <div class="combo-contents">
+                            <span>What's included</span>
+                            {{ item.combo_contents }}
+                        </div>
+                        {% else %}
+                        <div class="food-description">Prepared fresh with quality ingredients for the perfect bite.</div>
+                        {% endif %}
+
+                        <div class="food-actions">
+                            <button class="cart-btn" onclick="addToCart(this)">
+                                <span>Add to cart</span>
+                                <strong>+</strong>
+                            </button>
+
+                            <div class="quantity-box" style="display:none;">
+                                <button onclick="decrease(this)" aria-label="Decrease quantity">−</button>
+                                <span class="quantity">1</span>
+                                <button onclick="increase(this)" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <span class="empty-icon">
+                    <svg viewBox="0 0 24 24"><path d="M6 2v7a3 3 0 0 0 3 3V2M9 2v20M18 2v20M15 2v7h6"/></svg>
+                </span>
+                <h2>Something delicious is coming</h2>
+                <p>No items have been added to this category yet. Please check back soon.</p>
+                <a href="/" class="primary-link">Explore other categories</a>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <a href="/"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Home</span></a>
+        <a href="/combo"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2Zm10 14V7M12 7H7.5a2.5 2.5 0 1 1 2.1-3.9L12 7Zm0 0h4.5a2.5 2.5 0 1 0-2.1-3.9L12 7Z"/></svg><span>Offers</span></a>
+        <a href="/cart" class="active"><svg viewBox="0 0 24 24"><path d="M3 3h2l2.2 10.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H7M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg><span>Cart</span></a>
+        <a href="/contact"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span>Contact</span></a>
+    </nav>
+</body>
+</html>
